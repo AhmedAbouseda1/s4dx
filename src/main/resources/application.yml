@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: s4dx
+    build:
+      version: @project.version@
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/s4dx_db?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+
+  jpa:
+    show-sql: false
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+  flyway:
+    enabled: true
+    table: schema_version
+    validate-on-migrate: false
+    baseline-on-migrate: true
+
+server:
+  servlet:
+    context-path: /s4dx
+  port: 8087
